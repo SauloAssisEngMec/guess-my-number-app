@@ -4,7 +4,11 @@ import PrimaryButton from "../components/PrimaryButton";
 function StartScreen() {
   return (
     <View style={styles.inputContainer}>
-      <TextInput />
+      <TextInput
+        style={styles.textInput}
+        maxLength={2}
+        keyboardType="number-pad"
+      />
       <PrimaryButton>Confirm</PrimaryButton>
       <PrimaryButton>Reset</PrimaryButton>
     </View>
@@ -24,5 +28,16 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 2, height: 2 },
     shadowOpacity: 0.4,
     shadowRadius: 6,
+  },
+  textInput: {
+    borderBottomWidth: 1,
+    borderBottomColor: "#fff",
+    height: 50,
+    width: 60,
+    fontSize: 30,
+    color: "#fff",
+    marginVertical: 10,
+    fontWeight: "bold",
+    textAlign: "center",
   },
 });
