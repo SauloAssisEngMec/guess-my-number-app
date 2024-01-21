@@ -9,8 +9,14 @@ function StartScreen() {
         maxLength={2}
         keyboardType="number-pad"
       />
-      <PrimaryButton>Confirm</PrimaryButton>
-      <PrimaryButton>Reset</PrimaryButton>
+      <View style={styles.buttonContainer}>
+        <View style={styles.button}>
+          <PrimaryButton>Confirm</PrimaryButton>
+        </View>
+        <View style={styles.button}>
+          <PrimaryButton>Reset</PrimaryButton>
+        </View>
+      </View>
     </View>
   );
 }
@@ -28,6 +34,8 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 2, height: 2 },
     shadowOpacity: 0.4,
     shadowRadius: 6,
+    justifyContent: "center",
+    alignItems: "center",
   },
   textInput: {
     borderBottomWidth: 1,
@@ -39,5 +47,12 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     fontWeight: "bold",
     textAlign: "center",
+  },
+  buttonContainer: {
+    flexDirection: "row",
+    marginTop: 2,
+  },
+  button: {
+    flex: 1,
   },
 });
