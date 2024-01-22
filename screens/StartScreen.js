@@ -25,7 +25,7 @@ export default StartScreen;
 const styles = StyleSheet.create({
   inputContainer: {
     marginTop: 100,
-    backgroundColor: "#662549",
+    backgroundColor: "#416D6D",
     marginHorizontal: 22,
     padding: 16,
     borderRadius: 8,
