@@ -1,9 +1,10 @@
 import { StyleSheet, Text, View } from "react-native";
+import Title from "../components/Title";
 
 function MainScreen() {
   return (
     <View style={styles.container}>
-      <Text>Opponent's Guess</Text>
+      <Title>Opponent's Guess</Title>
       {/* Guess */}
       <View>
         <Text>Tell me, Higher or lower?</Text>
@@ -21,7 +22,6 @@ export default MainScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    padding: 24,
   },
 });
