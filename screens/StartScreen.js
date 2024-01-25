@@ -50,6 +50,12 @@ function StartScreen({ onPickedNumber }) {
           </View>
         </View>
       </View>
+      <View style={styles.rulesContainer}>
+        <Text style={styles.rules}>
+          {" "}
+          If I guess your number in 5 rounds you drink
+        </Text>
+      </View>
       <View></View>
     </View>
   );
@@ -93,9 +99,25 @@ const styles = StyleSheet.create({
   },
   button: {
     flex: 1,
+    color: "#fff",
   },
   tipsContainer: {
     fontSize: 16,
     color: "white",
+  },
+  rulesContainer: {
+    marginTop: 70,
+    alignItems: "center",
+    justifyContent: "center",
+    margin: 20,
+    backgroundColor: "#3b4f4f",
+    borderRadius: 50,
+    padding: 35,
+    opacity: 0.8,
+  },
+  rules: {
+    fontSize: 22,
+    color: "white",
+    marginTop: 1,
   },
 });

@@ -37,7 +37,8 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
   buttonText: {
-    color: "black",
+    color: "#fff",
     textAlign: "center",
+    fontSize: 15,
   },
 });
