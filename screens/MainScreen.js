@@ -3,6 +3,8 @@ import Title from "../components/Title";
 import { useEffect, useState } from "react";
 import GuessNumber from "../components/GuessNumber";
 import PrimaryButton from "../components/PrimaryButton";
+// import { Ionicons } from "@expo/vector-icons/Ionicons";
+import { FontAwesome6 } from "@expo/vector-icons";
 
 function generateNumberBetween(min, max, exclude) {
   const randomNumber = Math.floor(Math.random() * (max - min)) + min;
@@ -51,18 +53,28 @@ function MainScreen({ userNumber, onGameOver }) {
     setCurrentGuess(newRandomNumber);
   }
   return (
-    <View style={styles.container}>
-      <Title>Opponent's Guess</Title>
+    <View>
+      <View style={styles.titleContainer}>
+        <Title>Opponent's Guess</Title>
+      </View>
+
       <GuessNumber>{currentGuess}</GuessNumber>
-      <View>
-        <Text>Tell me, Higher or lower?</Text>
-        <View style={styles.minosPlusButton}>
-          <PrimaryButton onPress={nextGuessNumberHandler.bind(this, "lower")}>
-            -
-          </PrimaryButton>
-          <PrimaryButton onPress={nextGuessNumberHandler.bind(this, "greater")}>
-            +
-          </PrimaryButton>
+
+      <View style={styles.instructionContainer}>
+        <Text style={styles.instruction}>Tell me, Higher or lower?</Text>
+        <View style={styles.buttonContainer}>
+          <View style={styles.button}>
+            <PrimaryButton onPress={nextGuessNumberHandler.bind(this, "lower")}>
+              <FontAwesome6 name="less-than" size={24} color="white" />
+            </PrimaryButton>
+          </View>
+          <View style={styles.button}>
+            <PrimaryButton
+              onPress={nextGuessNumberHandler.bind(this, "greater")}
+            >
+              <FontAwesome6 name="greater-than" size={24} color="white" />
+            </PrimaryButton>
+          </View>
         </View>
       </View>
       <View>
@@ -75,14 +87,29 @@ function MainScreen({ userNumber, onGameOver }) {
 export default MainScreen;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  valueContainer: {
     padding: 24,
   },
-  minosPlusButton: {
+  titleContainer: {
+    marginTop: 50,
+    padding: 24,
+  },
+  buttonContainer: {
     flexDirection: "row",
-    justifyContent: "center",
+    marginTop: 20,
+  },
+  button: {
+    flex: 1,
+    margin: 5,
+  },
+  instructionContainer: {
+    backgroundColor: "#416D6D",
     alignItems: "center",
-    padding: 15,
+    margin: 20,
+    borderRadius: 25,
+  },
+  instruction: {
+    fontSize: 22,
+    color: "white",
   },
 });
