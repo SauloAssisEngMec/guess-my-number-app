@@ -1,4 +1,4 @@
-import { Alert, StyleSheet, Text, View } from "react-native";
+import { Alert, FlatList, StyleSheet, Text, View } from "react-native";
 import Title from "../components/Title";
 import { useEffect, useState } from "react";
 import GuessNumber from "../components/GuessNumber";
@@ -22,6 +22,7 @@ let maxValue = 100;
 function MainScreen({ userNumber, onGameOver }) {
   const initialGuess = generateNumberBetween(1, 100, userNumber);
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
+  const [guessRounds, setGuessRounds] = useState([initialGuess]);
 
   useEffect(() => {
     if (currentGuess === userNumber) {
@@ -56,6 +57,7 @@ function MainScreen({ userNumber, onGameOver }) {
       currentGuess
     );
     setCurrentGuess(newRandomNumber);
+    setGuessRounds((prevGuessRound) => [newRandomNumber, ...prevGuessRound]);
   }
   return (
     <View>
@@ -82,8 +84,12 @@ function MainScreen({ userNumber, onGameOver }) {
           </View>
         </View>
       </View>
-      <View>
-        <Text> Log rounds</Text>
+      <View style={styles.logList}>
+        <FlatList
+          data={guessRounds}
+          renderItem={(itemData) => <Text>{itemData.item}</Text>}
+          keyExtractor={(item) => item}
+        />
       </View>
     </View>
   );
@@ -96,7 +102,7 @@ const styles = StyleSheet.create({
     padding: 24,
   },
   titleContainer: {
-    marginTop: 50,
+    marginTop: 20,
     padding: 24,
   },
   buttonContainer: {
@@ -116,5 +122,16 @@ const styles = StyleSheet.create({
   instruction: {
     fontSize: 22,
     color: "white",
+  },
+  logList: {
+    borderColor: "white",
+    borderWidth: 1.5,
+    padding: 5,
+    marginVertical: 2,
+    backgroundColor: "#8ab4b4",
+    justifyContent: "center",
+    alignItems: "center",
+    marginHorizontal: 60,
+    borderRadius: 25,
   },
 });
