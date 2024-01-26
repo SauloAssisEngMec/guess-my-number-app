@@ -29,6 +29,11 @@ function MainScreen({ userNumber, onGameOver }) {
     }
   }, [userNumber, currentGuess, onGameOver]);
 
+  useEffect(() => {
+    minValue = 1;
+    maxValue = 100;
+  }, []); // vai ser executado somente uma vez
+
   function nextGuessNumberHandler(result) {
     if (
       (result === "lower" && currentGuess < userNumber) ||

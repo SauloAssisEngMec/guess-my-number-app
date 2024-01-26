@@ -8,6 +8,7 @@ import GameOverScreen from "./screens/GameOverScreen";
 export default function App() {
   const [userNumber, setUserNumber] = useState();
   const [gameOver, setGameOver] = useState(true);
+  const [roundsNumber, setRoundsNumber] = useState(0);
 
   function pickedNumberHandler(pickedNumber) {
     setUserNumber(pickedNumber);
@@ -15,6 +16,11 @@ export default function App() {
   }
   function gameOverHandler() {
     setGameOver(true);
+  }
+
+  function startNewGame() {
+    setUserNumber(null);
+    setRoundsNumber(0);
   }
 
   let screen = <StartScreen onPickedNumber={pickedNumberHandler} />;
@@ -26,7 +32,13 @@ export default function App() {
   }
 
   if (gameOver && userNumber) {
-    screen = <GameOverScreen />;
+    screen = (
+      <GameOverScreen
+        roundsNumber={roundsNumber}
+        userNumber={userNumber}
+        onStartNewGame={startNewGame}
+      />
+    );
   }
   return (
     <LinearGradient colors={["#578585", "#C5D0D3"]} style={styles.rootScreen}>

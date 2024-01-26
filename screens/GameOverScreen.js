@@ -1,7 +1,8 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import Title from "../components/Title";
+import PrimaryButton from "../components/PrimaryButton";
 
-function GameOverScreen() {
+function GameOverScreen({ userNumber, roundsNumber, onStartNewGame }) {
   return (
     <View style={styles.container}>
       <Title>I GUESS THE NUMBER, DRINK IT!</Title>
@@ -12,11 +13,13 @@ function GameOverScreen() {
           resizeMode="cover"
         />
       </View>
-      <View>
-        <Text>
-          I need <Text> X </Text> times to guess the number!
+      <View style={styles.logsContainer}>
+        <Text style={styles.text}>
+          I need <Text> {roundsNumber} </Text> rounds to guess the number{" "}
+          <Text>{userNumber}</Text>!
         </Text>
       </View>
+      <PrimaryButton onPress={onStartNewGame}>Start New Game</PrimaryButton>
     </View>
   );
 }
@@ -39,5 +42,17 @@ const styles = StyleSheet.create({
   image: {
     width: "100%",
     height: "100%",
+  },
+  logsContainer: {
+    backgroundColor: "#1a1e1e",
+    padding: 11,
+    margin: 7,
+    borderRadius: 25,
+    color: "white",
+  },
+  text: {
+    color: "white",
+    opacity: 0.8,
+    fontSize: 16,
   },
 });
